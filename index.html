@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+        .content{
+            margin: 100px auto;
+            width: 300px;
+            height: 400px;
+            border: thin solid #000;
+            background-color: #000;
+            position: relative;
+            border-radius: 15px;
+        }
+        .display-cont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .input-n{
+            background-color: orange;
+            width: 50px;
+            height: 30px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            border: none;
+            
+        }
+        .input-f{
+            width: 50px;
+            height: 30px;
+            background-color: #474646ce;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+        }
+        
+        .btns{
+            display: grid;
+            grid-template-areas: 
+            "ac delet divide multi"
+            "num7 num8 num9 minus"
+            "num6 num5 num4 addition"
+            "num1 num2 num3 enter"
+            "num0 num0 point enter";
+            gap: 1rem;
+            position: absolute;
+            bottom: 0;
+            margin: 20px;
+        }
+        .enter{
+            grid-area: enter;
+            width: 50px;
+            height: 80px;
+        }
+        .ac{
+            grid-area: ac;
+
+        }
+        .addition{
+            grid-area: addition;
+        }
+        .minus{
+            grid-area: minus;
+        }
+        .point{
+            grid-area: point;
+        }
+        .delet{
+            grid-area: delet;
+        }
+        .divide{
+            grid-area: divide;
+        }
+        .multiply{
+            grid-area: multi;
+        }
+        .num1{
+            grid-area: num1;
+        }
+        .num2{
+            grid-area: num2;
+        }
+        .num3{
+            grid-area: num3;
+        }
+        .num4{
+            grid-area: num4;
+        }
+        .num5{
+            grid-area: num5;
+        }
+        .num6{
+            grid-area: num6;
+        }
+        .num7{
+            grid-area: num7;
+        }
+        .num8{
+            grid-area: num8;
+        }
+        .num9{
+            grid-area: num9;
+        }
+        .zero{
+            grid-area: num0;
+            width: 135px;
+            height: 30px;
+        }
+        .input-return{
+            margin-top: 30px;
+            width: 100%;
+            height: 80px;
+            font-size: 3rem;
+            color: #fff;
+            border:  none;
+            background-color: #000;       
+            text-align: right;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div>
+            <div class="display-cont">
+                <input id="displaySelected" placeholder="0" class="input-return"></input>
+            </div>
+            <div class="btns">
+                <button onclick="clearNum()" class="input-n ac">AC</button>
+                <button onclick="deletaNum()" class="input-n delet">DEL</button>
+                <button onclick="numMethod('/')" class="input-n divide">/</button>
+                <button onclick="numMethod('*')" class="input-n multiply">*</button>
+                <button onclick="num(7)" class="input-f num7">7</button>
+                <button onclick="num(8)" class="input-f num8">8</button>
+                <button onclick="num(9)" class="input-f num9">9</button>
+                <button onclick="numMethod('-')" class="input-n minus">-</button>
+                <button onclick="num(6)" class="input-f num6">6</button>
+                <button onclick="num(5)" class="input-f num5">5</button>
+                <button onclick="num(4)" class="input-f num4">4</button>
+                <button onclick="numMethod('+')" class="input-n addition">+</button>
+                <button onclick="num(1)" id="num" class="input-f num1">1</button>
+                <button onclick="num(2)" class="input-f num2">2</button>
+                <button onclick="num(3)" class="input-f num3">3</button>
+                <button onclick="enterAction()" class="input-n enter">=</button>
+                <button onclick="num(0)" class="input-f zero">0</button>
+                <button onclick="num('.')" class="input-f point">.</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let saveNum1 = '';
+    let saveNum2 = '';
+    let canClear = false;
+    let operator = '';
+
+   function num(number){
+    document.getElementById('displaySelected').value += number; 
+   }
+   function clearNum(){
+    document.getElementById('displaySelected').value = ''; 
+    
+   }
+   function deletaNum(){
+    document.getElementById('displaySelected').value = document.getElementById('displaySelected').value.slice(0, -1); 
+   }
+   function numMethod(method) {
+    operator = method;
+    saveNum1 = document.getElementById('displaySelected').value;
+    console.log(saveNum1, operator);
+    document.getElementById('displaySelected').value = '';
+    
+   }
+   function enterAction(){
+    saveNum2 = document.getElementById('displaySelected').value;
+    if(operator==='+'){
+        document.getElementById('displaySelected').value = Number(saveNum1) + Number(saveNum2);
+    }
+    if(operator==='-'){
+        document.getElementById('displaySelected').value = Number(saveNum1) - Number(saveNum2);
+    }
+    if(operator==='*'){
+        document.getElementById('displaySelected').value = Number(saveNum1) * Number(saveNum2);
+    }
+    if(operator==='/'){
+        document.getElementById('displaySelected').value = Number(saveNum1) / Number(saveNum2);
+    }
+   }
+   
+</script>
+</html>
