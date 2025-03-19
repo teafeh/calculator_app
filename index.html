@@ -124,6 +124,64 @@
             text-align: right;
             padding: 10px;
         }
+        @media(max-width:500px){
+            .input-return{
+                font-size: 3.5rem;
+            }
+            .content{
+                margin: 0;
+                width: 100%;
+                height: 70vh;
+            }
+            .btns{
+                width: 80%;
+                margin:  40px;
+                grid-template-areas: 
+                "ac delet divide multi enter"
+                "num7 num8 num9 minus enter"
+                "num6 num5 num4 addition enter"
+                "num1 num2 num3 point  enter"
+                "num0 num0 num0 point enter";
+                ;
+            }
+            .zero{
+            width: 100% !important;
+            height: 30px;
+            }
+            .enter{
+            width: 50px;
+            height: 100%;
+            }
+            .point{
+            height: 100%;
+             }
+             .input-f{
+                width: 55px;
+            }
+            .input-n{
+                width: 55px;
+            }
+        }
+        @media(max-width:400px){
+            .btns{
+                margin: 30px 10px;
+            }
+        }
+        @media(max-width:360px){
+            .btns{
+                margin: 20px;
+            }
+            .input-f{
+                width: 40px;
+            }
+            .input-n{
+                width: 40px;
+            }
+            .zero{
+            width: 100%;
+            height: 30px;
+            }
+        }
     </style>
 </head>
 <body>
